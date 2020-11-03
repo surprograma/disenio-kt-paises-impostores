@@ -1,27 +1,28 @@
 plugins {
-  id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+  id 'org.jetbrains.kotlin.jvm' version '1.4.0'
 }
 
-ext.kotestVersion = "4.1.1"
+ext.kotestVersion = "4.3.1"
+ext.moshiVersion = "1.11.0"
 
 group 'ar.edu.unahur.obj2'
 version '1.0-SNAPSHOT'
 
 repositories {
   mavenCentral()
-  maven {
-    url "https://oss.sonatype.org/content/repositories/snapshots/"
-  }
 }
 
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
   implementation "org.jetbrains.kotlin:kotlin-reflect"
   implementation "org.jetbrains.kotlin:kotlin-script-runtime"
+  implementation "com.squareup.okhttp3:okhttp:4.9.0"
+  implementation "com.squareup.moshi:moshi:$moshiVersion"
+  implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
 
-  testImplementation "io.kotest:kotest-runner-junit5-jvm:$kotestVersion"
-  testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion"
-  testImplementation "io.kotest:kotest-runner-console-jvm:$kotestVersion"
+  testImplementation "io.kotest:kotest-runner-junit5:$kotestVersion"
+  testImplementation "io.kotest:kotest-assertions-core:$kotestVersion"
+  testImplementation "io.mockk:mockk:1.10.2"
 }
 
 compileKotlin {
