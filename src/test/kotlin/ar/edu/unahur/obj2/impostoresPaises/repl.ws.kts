@@ -1,9 +1,10 @@
 import ar.edu.unahur.obj2.impostoresPaises.RestCountriesAPI
 
-// Pueden usar este archivo para hacer pruebas rápidas,
-// de la misma forma en que usaban el REPL de Wollok.
+// Algunos ejemplos para que jueguen un poco
+// con lo que devuelve la API
 
-// OJO: lo que esté aquí no será tenido en cuenta
-// en la corrección ni reemplaza a los tests.
+val api = RestCountriesAPI()
 
-RestCountriesAPI().buscarPaisesPorNombre("argentina")
+api.buscarPaisesPorNombre("guay")
+
+api.paisConCodigo("CHL")
