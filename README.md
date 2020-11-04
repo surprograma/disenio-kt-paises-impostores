@@ -69,7 +69,8 @@ Se provee para ello la clase `RestCountriesAPI`, que provee tres métodos para h
 todosLosPaises(): List<Country>
 
 // Devuelve todos los países cuyo nombre incluya el String que viene por parámetro. 
-// Ejemplo: si ponemos "guay" devolverá a Paraguay y Uruguay, pero si ponemos "uruguay" devolverá solo a este último.
+// Ejemplo: si ponemos "guay" devolverá a Paraguay y Uruguay, 
+// pero si ponemos "uruguay" devolverá solo a este último.
 buscarPaisesPorNombre(nombre: String): List<Country>
 
 // Devuelve al país cuyo código ISO 3 coincide con el parámetro. 
