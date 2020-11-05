@@ -87,7 +87,7 @@ Se pide entonces:
 
 ### Etapa 3 - API impostora
 
-Los tests de la etapa anterior tienen un gran problema - cada vez que los ejecutamos hacen varios llamados a la API. Esto, además de ser bastante más lento que un test "puro", tiene otras desventajas: no podemos correr los tests sin acceso a internet, nos acopla fuertemente con una servicio externo, no podemos decidir sobre los datos, etc.
+Los tests de la etapa anterior tienen un gran problema - cada vez que los ejecutamos hacen varios llamados a la API. Esto, además de ser bastante más lento que un test "puro", tiene otras desventajas: no podemos correr los tests sin acceso a internet, nos acopla fuertemente con un servicio externo, no podemos decidir sobre los datos, etc.
 
 Para solucionar esto, se pide modificar todos los tests que utilicen la API, reemplazandola por un impostor implementado con [mockk](https://mockk.io/).
 
