@@ -37,7 +37,7 @@ idiomasOficiales: ["Español", "Quechua", "Aymara"]
 
 ## Requerimientos
 
-Dividimos los requerimientos en 3 étapas distintas, que deben ser respetadas
+Dividimos los requerimientos en 3 étapas distintas, que deben ser respetadas. El ejercicio está planteado de esta manera para que el diseño les quede más prolijo y desacoplado.
 
 ### Etapa 1 - consultas
 
@@ -60,9 +60,9 @@ Obviamente, para esta etapa hay que incluir todos los tests correspondientes.
 
 ### Etapa 2 - Conectando con el mundo real
 
-Queremos ahora modificar al observatorio para que pueda resolver todos los requerimientos anteriores, pero esta vez interactuando con la [API RestCountries](http://restcountries.eu/). Esta [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) es un servicio gratuito que brinda información real sobre los países del mundo
+Queremos ahora modificar al observatorio para que pueda resolver todos los requerimientos anteriores, pero esta vez interactuando con la [API RestCountries](http://restcountries.eu/). Esta [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) es un servicio gratuito que brinda información real sobre los países del mundo.
 
-Se provee para ello la clase `RestCountriesAPI`, que provee tres métodos para hacer consultas:
+Para facilitarles la interacción con dicho servicio y que no tengan que preocuparse por cuestiones propias de la interacción HTTP, les dejamos la clase `RestCountriesAPI`, que provee tres métodos para hacer consultas:
 
 ```kotlin
 // Devuelve una lista con todos los países del mundo.
