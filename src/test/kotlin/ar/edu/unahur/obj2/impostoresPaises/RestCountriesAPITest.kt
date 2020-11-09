@@ -15,6 +15,7 @@ class RestCountriesAPITest : DescribeSpec({
     val caboVerde =
       Country(
         "Cabo Verde",
+        "CPV",
         "Praia",
         "Africa",
         531239,
@@ -26,6 +27,7 @@ class RestCountriesAPITest : DescribeSpec({
     val bolivia =
       Country(
         "Bolivia (Plurinational State of)",
+        "BOL",
         "Sucre",
         "Americas",
         10985059,
