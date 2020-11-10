@@ -57,7 +57,7 @@ data class Country(
   val alpha3Code: String,
   val capital: String,
   val region: String,
-  val population: Int,
+  val population: Long,
   val borders: List<String>,
   val languages: List<Language>,
   val regionalBlocs: List<RegionalBloc>
