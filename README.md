@@ -91,6 +91,24 @@ Los tests de la etapa anterior tienen un gran problema - cada vez que los ejecut
 
 Para solucionar esto, se pide modificar todos los tests que utilicen la API, reemplazandola por un impostor implementado con [mockk](https://mockk.io/).
 
+### Etapa 4 - Usando la aplicación
+
+Llegó el momento de realmente conectar a nuestro programa con el mundo real, permitiendo que "cualquier persona" (que tenga una computadora, Kotlin y los conocimientos necesarios para ejecutarlo) pueda utilizarlo.
+
+Para ello, vamos a programar una pequeña CLI, _command line interface_ o _interfaz por línea de comandos_, que nos permita acceder a los requerimientos de la etapa 1, trayendo la información de la RestCountries API. El diseño de la interfaz queda librado a su creatividad, siempre y cuando cumpla con los siguientes requerimientos:
+
+1. Deben poder realizarse todas las consultas de la etapa 1, interactuando con la API real.
+1. En caso de error, hay que mostrar algún mensaje amigable.
+1. Incluir al menos un test por cada opción que tenga el CLI, y alguno donde se muestre un error. Simular la interacción de usuario utilizando mockk.
+
+A modo de ejemplo, les dejamos unos GIFs mostrando podría ser la interacción:
+
+_Caso feliz :smiley:_
+![CLI](assets/cli.gif)
+
+_Error :cry:_
+![CLI error](assets/cli-error.gif)
+
 ## Créditos
 
 Enunciado original creado por Federico Aloi para UNaHur, levemente inspirado en un enunciado de Carlos Lombardi.

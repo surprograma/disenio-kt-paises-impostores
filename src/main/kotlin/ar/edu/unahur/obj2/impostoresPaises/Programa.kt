@@ -1,15 +1,9 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
-// Esta interfaz nos sirve para
-interface EntradaSalida {
-  fun leerLinea(): String?
-  fun escribirLinea(contenido: String)
-}
-
 // Acá encapsulamos el manejo de la consola real, desacoplandolo del programa en sí
-object Consola : EntradaSalida {
-  override fun leerLinea() = readLine()
-  override fun escribirLinea(contenido: String) {
+object Consola {
+  fun leerLinea() = readLine()
+  fun escribirLinea(contenido: String) {
     println(contenido)
   }
 }
@@ -17,7 +11,7 @@ object Consola : EntradaSalida {
 // El código de nuestro programa, que (eventualmente) interactuará con una persona real
 object Programa {
   // Ambas son variables para poder cambiarlas en los tests
-  var entradaSalida: EntradaSalida = Consola
+  var entradaSalida = Consola
   var api = RestCountriesAPI()
 
   fun iniciar() {
