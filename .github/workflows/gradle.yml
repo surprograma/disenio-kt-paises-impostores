@@ -1,0 +1,26 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Kotlin test
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configurar JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - run: chmod +x gradlew
+    - name: Ejecutar los tests con Gradle
+      run: ./gradlew test
+    - name: Mostrar resultados de test
+      if: ${{ always() }}
+      uses: mikepenz/action-junit-report@v2
+      with:
+        report_paths: '**/build/test-results/test/TEST-*.xml'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
