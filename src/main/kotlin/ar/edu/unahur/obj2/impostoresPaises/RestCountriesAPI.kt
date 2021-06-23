@@ -15,6 +15,7 @@ class RestCountriesAPI {
   private val urlBase = "https://restcountries.eu/rest/v2"
   private val client = OkHttpClient()
   private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
+  private val cache = mutableMapOf<String, Any>()
 
   private val countriesAdapter = crearAdapter<List<Country>>(
     Types.newParameterizedType(List::class.java, Country::class.java)
@@ -22,18 +23,22 @@ class RestCountriesAPI {
 
   private val countryAdapter = crearAdapter<Country>(Country::class.java)
 
-  fun todosLosPaises() = obtenerRespuesta("/all", countriesAdapter)!!
+  fun todosLosPaises() = obtenerRecurso("/all", countriesAdapter)!!
 
   fun buscarPaisesPorNombre(nombre: String) =
-    obtenerRespuesta("/name/${nombre}", countriesAdapter).orEmpty()
+    obtenerRecurso("/name/${nombre}", countriesAdapter).orEmpty()
 
   fun paisConCodigo(codigoIso3: String) =
     checkNotNull(
-      obtenerRespuesta("/alpha/${codigoIso3}", countryAdapter),
-      { "No se encontró ningún país con el código $codigoIso3" }
-    )
+      obtenerRecurso("/alpha/${codigoIso3}", countryAdapter)
+    ) { "No se encontró ningún país con el código $codigoIso3" }
 
-  private fun <T> obtenerRespuesta(ruta: String, adapter: JsonAdapter<T>): T? {
+  private fun <T> obtenerRecurso(ruta: String, adapter: JsonAdapter<T>) =
+    cache.getOrPut(ruta) {
+      obtenerDeLaAPI(ruta, adapter) as Any
+    } as T?
+
+  private fun <T> obtenerDeLaAPI(ruta: String, adapter: JsonAdapter<T>): T? {
     val response = client.newCall(crearRequest(urlBase + ruta)).execute()
     return if (response.isSuccessful) { adapter.fromJson(response.body!!.source())!! } else { null }
   }
@@ -58,6 +63,7 @@ data class Country(
   val capital: String,
   val region: String,
   val population: Long,
+  val area: Double?,
   val borders: List<String>,
   val languages: List<Language>,
   val regionalBlocs: List<RegionalBloc>
