@@ -19,6 +19,7 @@ class RestCountriesAPITest : DescribeSpec({
         "Praia",
         "Africa",
         531239,
+        4033.0,
         emptyList(),
         listOf(Language("Portuguese")),
         listOf(RegionalBloc("AU", "African Union"))
@@ -31,6 +32,7 @@ class RestCountriesAPITest : DescribeSpec({
         "Sucre",
         "Americas",
         10985059,
+        1098581.0,
         listOf("ARG", "BRA", "CHL", "PRY", "PER"),
         listOf(Language("Spanish"), Language("Aymara"), Language("Quechua")),
         listOf(RegionalBloc("USAN", "Union of South American Nations"))

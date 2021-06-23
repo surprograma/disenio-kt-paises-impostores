@@ -21,7 +21,7 @@ Desde un observatorio de políticas públicas mundiales nos piden desarrollar un
 * en qué continente está ubicado,
 * la lista de países con los que limita,
 * la lista de bloques regionales en los que participa,
-* la lista de idiomas oficiales.
+* la lista de idiomas oficiales que reconoce.
 
 Por simplicidad, manejaremos al continente, los bloques regionales y los idiomas como `String`. Por ejemplo, podríamos representar a Bolivia con los siguientes datos:
 
@@ -39,9 +39,21 @@ idiomasOficiales: ["Español", "Quechua", "Aymara"]
 
 ## Requerimientos
 
-Dividimos los requerimientos en 3 étapas distintas, que deben ser respetadas. El ejercicio está planteado de esta manera para que el diseño les quede más prolijo y desacoplado.
+Dividimos los requerimientos en varias etapas distintas, cuyo orden debe ser respetado. El ejercicio está planteado de esta manera para que el diseño les quede más prolijo y desacoplado.
 
 ### Etapa 1 - Calentando motores
+
+Para un país:
+
+1. Indicar si **es plurinacional**. En una mega-simplificación de este concepto, diremos que un país es plurinacional si tiene más de un idioma oficial.
+1. Saber si **es una isla**, lo cual es cierto si no tiene ningún país limítrofe.
+1. Calcular su **densidad poblacional**, la cual se obtiene dividiendo a la población por la superficie.
+
+Para dos países en particular:
+
+1. Poder consultar si **son limítrofes**.
+1. Saber si **necesitan traducción** para poder dialogar. Esto ocurre si no comparten ninguno de sus idiomas oficiales.
+1. Conocer si **son potenciales aliados**. Esto es así cuando no necesitan traducción y además comparten algún bloque regional.
 
 ### Etapa 2 - Observatorio
 
@@ -57,8 +69,9 @@ Ojo, que se pide (a propósito) que los parámetros sean **los nombres** de los 
 
 Sobre el conjunto de todos los países:
 
-4. Obtener los nombres de los 5 países con mayor población.
-5. Indicar cuál es el continente más poblado.
+4. Obtener los códigos ISO de los 5 países con mayor densidad poblacional.
+5. Indicar el nombre del continente con más paises plurinacionales.
+6. Conocer el promedio de densidad poblacional de los países-isla.
 
 Obviamente, para esta etapa hay que incluir todos los tests correspondientes.
 
@@ -103,9 +116,9 @@ Para ello, vamos a programar una pequeña CLI, _command line interface_ o _inter
 
 1. Deben poder realizarse todas las consultas de la etapa 1, interactuando con la API real.
 1. En caso de error, hay que mostrar algún mensaje amigable.
-1. Incluir al menos un test por cada opción que tenga el CLI, y alguno donde se muestre un error. Simular la interacción de usuario utilizando mockk.
+1. Incluir al menos un test por cada opción que tenga el CLI, y alguno donde se muestre un error. Simular la interacción de usuario utilizando `mockk`.
 
-A modo de ejemplo, les dejamos unos GIFs mostrando podría ser la interacción:
+A modo de ejemplo, les dejamos unos GIFs mostrando cómo podría ser la interacción:
 
 _Caso feliz :smiley:_
 ![CLI](assets/cli.gif)
