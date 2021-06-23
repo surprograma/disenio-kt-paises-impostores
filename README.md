@@ -17,6 +17,7 @@ Desde un observatorio de políticas públicas mundiales nos piden desarrollar un
 * su nombre,
 * su código ISO-3,
 * su población,
+* su superficie,
 * en qué continente está ubicado,
 * la lista de países con los que limita,
 * la lista de bloques regionales en los que participa,
@@ -28,6 +29,7 @@ Por simplicidad, manejaremos al continente, los bloques regionales y los idiomas
 nombre: "Bolivia"
 codigoIso3: "BOL"
 poblacion: 10985059
+superficie: 1098581.0
 continente: "América"
 // Notar que estos son objetos, no strings
 paisesLimitrofes: [argentina, brasil, chile, paraguay, peru]  
@@ -39,7 +41,9 @@ idiomasOficiales: ["Español", "Quechua", "Aymara"]
 
 Dividimos los requerimientos en 3 étapas distintas, que deben ser respetadas. El ejercicio está planteado de esta manera para que el diseño les quede más prolijo y desacoplado.
 
-### Etapa 1 - consultas
+### Etapa 1 - Calentando motores
+
+### Etapa 2 - Observatorio
 
 Crear al Observatorio, que es un objeto que conoce a todos los países y debe poder responder las consultas que se enuncian a continuación. 
 
@@ -58,7 +62,7 @@ Sobre el conjunto de todos los países:
 
 Obviamente, para esta etapa hay que incluir todos los tests correspondientes.
 
-### Etapa 2 - Conectando con el mundo real
+### Etapa 3 - Conectando con el mundo real
 
 Queremos ahora modificar al observatorio para que pueda resolver todos los requerimientos anteriores, pero esta vez interactuando con la [API RestCountries](http://restcountries.eu/). Esta [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) es un servicio gratuito que brinda información real sobre los países del mundo.
 
@@ -85,13 +89,13 @@ Se pide entonces:
 1. Hacer un objeto o clase que se encargue de realizar la conversión de `Country` a `Pais`. Este objeto debería conocer a la API, para poder hacer las consultas necesarias. Incluir los tests correspondientes.
 1. Modificar al Observatorio y a sus tests para que funcionen con la API. Para ello, van a tener que utilizar tanto la API como el objeto o clase que hayan creado en el requerimiento anterior. Si en la etapa anterior hicieron un buen diseño, no deberían necesitar modificar mucho el código.
 
-### Etapa 3 - API impostora
+### Etapa 4 - API impostora
 
 Los tests de la etapa anterior tienen un gran problema - cada vez que los ejecutamos hacen varios llamados a la API. Esto, además de ser bastante más lento que un test "puro", tiene otras desventajas: no podemos correr los tests sin acceso a internet, nos acopla fuertemente con un servicio externo, no podemos decidir sobre los datos, etc.
 
 Para solucionar esto, se pide modificar todos los tests que utilicen la API, reemplazandola por un impostor implementado con [mockk](https://mockk.io/).
 
-### Etapa 4 - Usando la aplicación
+### Etapa 5 - Usando la aplicación
 
 Llegó el momento de realmente conectar a nuestro programa con el mundo real, permitiendo que "cualquier persona" (que tenga una computadora, Kotlin y los conocimientos necesarios para ejecutarlo) pueda utilizarlo.
 
@@ -109,13 +113,18 @@ _Caso feliz :smiley:_
 _Error :cry:_
 ![CLI error](assets/cli-error.gif)
 
-## Créditos
 
-Enunciado original creado por Federico Aloi para UNaHur, levemente inspirado en un enunciado de Carlos Lombardi.
+## Licencia
+  
+Esta obra fue elaborada por [Federico Aloi](https://github.com/faloi) y publicada bajo una [Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional][cc-by-sa].
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
 
-Esta obra está bajo una [Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional][cc-by-sa].
-
 [cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.es
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+
+### Créditos
+
+:memo: Inspirado levemente en un enunciado de [Carlos Lombardi](https://github.com/clombardi).
+
+:camera_flash: Imagen de portada por <a href="https://unsplash.com/@gabrielrojas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Gabriel Rojas</a> en <a href="https://unsplash.com/s/photos/banderas-uyuni?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>.
