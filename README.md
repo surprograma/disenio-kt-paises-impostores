@@ -50,7 +50,7 @@ Modelar los países con los atributos mencionados y resolver los siguientes requ
 1. Indicar si **es plurinacional**. En una mega-simplificación de este concepto, diremos que un país es plurinacional si tiene más de un idioma oficial.
 1. Saber si **es una isla**, lo cual es cierto si no tiene ningún país limítrofe.
 1. Calcular su **densidad poblacional**, la cual se obtiene dividiendo a la población por la superficie.
-1. Conocer al **vecino más poblado**, que sería el país con mayor población en la vecindad. Ojo, que es perfectamente válido que el mismo país que consulta sea el más poblado.
+1. Conocer al **vecino más poblado**, que sería el país con mayor población dentro de la vecindad, que incluye tanto a los limítrofes como al país que consulta. Por ejemplo: asumiendo que Brasil es el país más poblado de su vecindad, tanto `brasil.vecinoMasPoblado()` como `peru.vecinoMasPoblado()` nos deberían dar como resultado `brasil`.
 
 **Para dos países en particular:**
 
