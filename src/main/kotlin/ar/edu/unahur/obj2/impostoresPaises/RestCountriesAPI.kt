@@ -15,7 +15,7 @@ class RestCountriesAPI {
   private val urlBase = "https://restcountries.eu/rest/v2"
   private val client = OkHttpClient()
   private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-  private val cache = mutableMapOf<String, Any>()
+  private val cache = mutableMapOf<String, Any?>()
 
   private val countriesAdapter = crearAdapter<List<Country>>(
     Types.newParameterizedType(List::class.java, Country::class.java)
@@ -35,7 +35,7 @@ class RestCountriesAPI {
 
   private fun <T> obtenerRecurso(ruta: String, adapter: JsonAdapter<T>) =
     cache.getOrPut(ruta) {
-      obtenerDeLaAPI(ruta, adapter) as Any
+      obtenerDeLaAPI(ruta, adapter)
     } as T?
 
   private fun <T> obtenerDeLaAPI(ruta: String, adapter: JsonAdapter<T>): T? {
