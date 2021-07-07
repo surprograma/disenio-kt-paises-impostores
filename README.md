@@ -121,7 +121,7 @@ Para ello, vamos a programar una pequeña CLI, _command line interface_ o _inter
 
 1. Deben poder realizarse todas las consultas de las dos primeras etapas, interactuando con la API real.
 1. En caso de que los datos que se ingresan sean erróneos, hay que mostrar algún mensaje amigable.
-1. Incluir al menos un test por cada opción que tenga el CLI, y alguno donde se muestre un error. Simular la interacción de usuario utilizando `mockk`.
+1. Incluir al menos un test por cada opción que tenga el CLI, y alguno donde se muestre un error. Simular la interacción de usuario y la interacción con la RestCountriesAPI utilizando mockk. En otras palabras: ningún test debería traer datos de la API real, todos los datos de países que utilicen deben ser mockeados.
 
 A modo de ejemplo, les dejamos unos GIFs mostrando cómo podría ser la interacción:
 
