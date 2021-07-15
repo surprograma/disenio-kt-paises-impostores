@@ -102,6 +102,10 @@ Se pide entonces:
 
 1. Hacer un objeto o clase que sepa cómo transformar un objeto `Country` a un objeto `Pais`. Este objeto probablemente necesite conocer a la API, para poder hacer las consultas necesarias. Incluir los tests correspondientes.
 1. Modificar al Observatorio para que sus consultas interactúen con la API. Utilizando el adaptador que crearon en el requerimiento anterior, no deberían necesitar modificar mucho el código que ya tienen.
+1. En las consultas que buscan países por nombre, arrojar errores si:
+  1) Se ingresa ambas veces al mismo país. Ejemplo: `observatorio.sonLimitrofes("Panamá", "Panamá")`.
+  2) Alguno/s de los países ingresados no existe/n. Ejemplo: `observatorio.necesitanTraduccion("Venezuela", "Sarasa")`.
+  3) Hay más de un país cuyo nombre coincida con el parámetro de búsqueda. Ejemplo: `observatorio.sonPotencialesAliados("mbia", "Cabo Verde")`.
 
 **:warning: Importante:** una vez que conecten al Observatorio con la `RestCountriesAPI`, se les van a romper los tests (porque los datos reales no van a ser los mismos que ustedes inventaron). Los arreglaremos en la etapa siguiente.
 
