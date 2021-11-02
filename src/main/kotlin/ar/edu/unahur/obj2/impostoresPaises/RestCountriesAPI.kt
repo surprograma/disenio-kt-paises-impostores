@@ -12,7 +12,7 @@ import java.lang.reflect.Type
 // pero no pueden cambiar absolutamente nada de este archivo.
 
 class RestCountriesAPI {
-  private val urlBase = "https://restcountries.eu/rest/v2"
+  private val urlBase = "https://restcountries.com/v2"
   private val client = OkHttpClient()
   private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
   private val cache = mutableMapOf<String, Any?>()
