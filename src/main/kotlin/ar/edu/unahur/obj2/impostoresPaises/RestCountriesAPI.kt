@@ -11,11 +11,8 @@ import java.lang.reflect.Type
 // Pueden mirar cómo está hecho si les da curiosidad,
 // pero no pueden cambiar absolutamente nada de este archivo.
 
-class RestCountriesAPI {
-  private val urlBase = "https://restcountries.com/v2"
-  private val client = OkHttpClient()
-  private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-  private val cache = mutableMapOf<String, Any?>()
+class RestCountriesAPI : RestAPI() {
+  override val urlBase = "https://restcountries.com/v2"
 
   private val countriesAdapter = crearAdapter<List<Country>>(
     Types.newParameterizedType(List::class.java, Country::class.java)
@@ -32,26 +29,6 @@ class RestCountriesAPI {
     checkNotNull(
       obtenerRecurso("/alpha/${codigoIso3}", countryAdapter)
     ) { "No se encontró ningún país con el código $codigoIso3" }
-
-  private fun <T> obtenerRecurso(ruta: String, adapter: JsonAdapter<T>) =
-    cache.getOrPut(ruta) {
-      obtenerDeLaAPI(ruta, adapter)
-    } as T?
-
-  private fun <T> obtenerDeLaAPI(ruta: String, adapter: JsonAdapter<T>): T? {
-    val response = client.newCall(crearRequest(urlBase + ruta)).execute()
-    return if (response.isSuccessful) { adapter.fromJson(response.body!!.source())!! } else { null }
-  }
-
-  private fun crearRequest(url: String): Request {
-    return Request.Builder()
-      .url(url)
-      .build()
-  }
-
-  private fun <T> crearAdapter(type: Type): JsonAdapter<T> {
-    return moshi.adapter(type)
-  }
 }
 
 // Tomamos solamente un subconjunto de la información que da la API.
