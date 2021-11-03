@@ -29,14 +29,19 @@ class RestCountriesAPI : RestAPI() {
 data class Country(
   val name: String,
   val alpha3Code: String,
-  val capital: String,
+  val capital: String?,
   val region: String,
   val population: Long,
   val area: Double?,
-  val borders: List<String>,
+  var borders: List<String>?,
   val languages: List<Language>,
-  val regionalBlocs: List<RegionalBloc>
-)
+  var regionalBlocs: List<RegionalBloc>?
+) {
+  init {
+    borders = borders.orEmpty()
+    regionalBlocs = regionalBlocs.orEmpty()
+  }
+}
 
 data class Language(
   val name: String

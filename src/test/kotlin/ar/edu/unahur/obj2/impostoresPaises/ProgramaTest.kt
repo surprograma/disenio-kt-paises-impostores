@@ -25,7 +25,7 @@ class ProgramaTest : DescribeSpec({
 
       // Verificamos que se escribió "por pantalla" el resultado esperado
       verify {
-        consolaMock.escribirLinea("Thailand (THA) es un país de Asia, con una población de 65327652 habitantes.")
+        consolaMock.escribirLinea("Thailand (THA) es un país de Asia, con una población de 69799978 habitantes.")
       }
     }
   }
