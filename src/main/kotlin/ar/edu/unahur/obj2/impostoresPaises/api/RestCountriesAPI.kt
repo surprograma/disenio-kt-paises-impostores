@@ -12,6 +12,8 @@ class RestCountriesAPI : RestAPI() {
 
   private val countryAdapter = crearAdapter<Country>(Country::class.java)
 
+  override val urlBase = "https://restcountries.com/v2"
+
   fun todosLosPaises() = obtenerRecurso("/all", countriesAdapter)!!
 
   fun buscarPaisesPorNombre(nombre: String) =

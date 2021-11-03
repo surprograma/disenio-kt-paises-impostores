@@ -8,16 +8,20 @@ import okhttp3.Request
 import java.lang.reflect.Type
 
 abstract class RestAPI {
-  protected abstract val urlBase: String
-
   private val client = OkHttpClient()
   private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
   private val cache = mutableMapOf<String, Any?>()
+
+  protected abstract val urlBase: String
 
   protected fun <T> obtenerRecurso(ruta: String, adapter: JsonAdapter<T>) =
     cache.getOrPut(ruta) {
       obtenerDeLaAPI(ruta, adapter)
     } as T?
+
+  protected fun <T> crearAdapter(type: Type): JsonAdapter<T> {
+    return moshi.adapter(type)
+  }
 
   private fun <T> obtenerDeLaAPI(ruta: String, adapter: JsonAdapter<T>): T? {
     val response = client.newCall(crearRequest(urlBase + ruta)).execute()
@@ -32,9 +36,5 @@ abstract class RestAPI {
     return Request.Builder()
       .url(url)
       .build()
-  }
-
-  protected fun <T> crearAdapter(type: Type): JsonAdapter<T> {
-    return moshi.adapter(type)
   }
 }
