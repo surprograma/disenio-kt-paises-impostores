@@ -1,5 +1,7 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
+import ar.edu.unahur.obj2.impostoresPaises.api.RestCountriesAPI
+
 // Acá encapsulamos el manejo de la consola real, desacoplandolo del programa en sí
 object Consola {
   fun leerLinea() = readLine()

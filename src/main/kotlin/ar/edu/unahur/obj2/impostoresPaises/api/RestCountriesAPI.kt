@@ -1,19 +1,11 @@
-package ar.edu.unahur.obj2.impostoresPaises
+package ar.edu.unahur.obj2.impostoresPaises.api
 
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.lang.reflect.Type
 
 // Pueden mirar cómo está hecho si les da curiosidad,
 // pero no pueden cambiar absolutamente nada de este archivo.
 
 class RestCountriesAPI : RestAPI() {
-  override val urlBase = "https://restcountries.com/v2"
-
   private val countriesAdapter = crearAdapter<List<Country>>(
     Types.newParameterizedType(List::class.java, Country::class.java)
   )

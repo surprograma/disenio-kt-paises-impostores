@@ -1,4 +1,4 @@
-package ar.edu.unahur.obj2.impostoresPaises
+package ar.edu.unahur.obj2.impostoresPaises.api
 
 import com.squareup.moshi.Types
 
