@@ -37,11 +37,13 @@ data class Country(
   val area: Double?,
   var borders: List<String>?,
   val languages: List<Language>,
-  var regionalBlocs: List<RegionalBloc>?
+  var regionalBlocs: List<RegionalBloc>?,
+  var currencies: List<Currency>?
 ) {
   init {
     borders = borders.orEmpty()
     regionalBlocs = regionalBlocs.orEmpty()
+    currencies = currencies.orEmpty()
   }
 }
 
@@ -52,4 +54,8 @@ data class Language(
 data class RegionalBloc(
   val acronym: String,
   val name: String
+)
+
+data class Currency(
+  val code: String
 )

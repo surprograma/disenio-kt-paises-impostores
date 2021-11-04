@@ -22,7 +22,8 @@ class RestCountriesAPITest : DescribeSpec({
         4033.0,
         emptyList(),
         listOf(Language("Portuguese")),
-        listOf(RegionalBloc("AU", "African Union"))
+        listOf(RegionalBloc("AU", "African Union")),
+        listOf(Currency("CVE"))
       )
 
     val bolivia =
@@ -35,7 +36,8 @@ class RestCountriesAPITest : DescribeSpec({
         1098581.0,
         listOf("ARG", "BRA", "CHL", "PRY", "PER"),
         listOf(Language("Spanish"), Language("Aymara"), Language("Quechua")),
-        listOf(RegionalBloc("USAN", "Union of South American Nations"))
+        listOf(RegionalBloc("USAN", "Union of South American Nations")),
+        listOf(Currency("BOB"))
       )
 
     it("buscar por nombre") {
