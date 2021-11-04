@@ -1,5 +1,6 @@
-package ar.edu.unahur.obj2.impostoresPaises
+package ar.edu.unahur.obj2.impostoresPaises.cli
 
+import ar.edu.unahur.obj2.impostoresPaises.Programa
 import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.*
 
