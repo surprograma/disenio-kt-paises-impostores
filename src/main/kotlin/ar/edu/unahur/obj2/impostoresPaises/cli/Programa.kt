@@ -1,8 +1,6 @@
-package ar.edu.unahur.obj2.impostoresPaises
+package ar.edu.unahur.obj2.impostoresPaises.cli
 
 import ar.edu.unahur.obj2.impostoresPaises.api.RestCountriesAPI
-import ar.edu.unahur.obj2.impostoresPaises.cli.AsciiArt
-import ar.edu.unahur.obj2.impostoresPaises.cli.Consola
 
 // El código de nuestro programa, que (eventualmente) interactuará con una persona real
 object Programa {
@@ -11,7 +9,7 @@ object Programa {
   var api = RestCountriesAPI()
 
   fun iniciar() {
-    entradaSalida.escribirLinea(AsciiArt.mundo())
+    entradaSalida.escribirLinea(AsciiArt.mundo)
     entradaSalida.escribirLinea("Hola, poné el nombre de un país y te mostramos algo de data")
     val pais = entradaSalida.leerLinea()
 
