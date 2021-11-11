@@ -7,6 +7,13 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.lang.reflect.Type
 
+/*
+👀 ¡¡ATENCIÓN!!
+El código de este archivo *funciona* tal cual está y no debe realizarse ninguna modificación.
+Lo incluimos en el proyecto únicamente con fines didácticos, para quienes quieran ver cómo
+está hecho. El ejercicio se tiene que resolver sin alterar para nada este archivo.
+ */
+
 abstract class RestAPI {
   private val client = OkHttpClient()
   private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
