@@ -41,8 +41,8 @@ class RestCountriesAPITest : DescribeSpec({
       )
 
     it("buscar por nombre") {
-      val paisesArgentina = api.buscarPaisesPorNombre("cabo verde")
-      paisesArgentina.shouldContainExactly(caboVerde)
+      val paisesCaboVerde = api.buscarPaisesPorNombre("cabo verde")
+      paisesCaboVerde.shouldContainExactly(caboVerde)
     }
 
     it("buscar por código") {
