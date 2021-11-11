@@ -32,11 +32,19 @@ abstract class RestAPI {
 
   private fun <T> obtenerDeLaAPI(ruta: String, adapter: JsonAdapter<T>): T? {
     val response = client.newCall(crearRequest(urlBase + ruta)).execute()
-    return if (response.isSuccessful) {
-      adapter.fromJson(response.body!!.source())!!
-    } else {
-      null
+    if (!response.isSuccessful) {
+      return null
     }
+
+    val json = response.body!!.string()
+
+    // Horrible, pero la RestCountriesAPI en vez de tirar un 404,
+    // devuelve un objeto que dice que es un 404.
+    if (json.contains("\"status\":404")) {
+      return null
+    }
+
+    return adapter.fromJson(json)
   }
 
   private fun crearRequest(url: String): Request {
