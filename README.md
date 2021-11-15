@@ -88,6 +88,8 @@ Sobre el conjunto de **todos los países**:
 
 ### Etapa 3 - Conectando con el mundo real
 
+#### RestCountriesAPI - info de los países
+
 Queremos ahora modificar al Observatorio para que pueda resolver todos los requerimientos anteriores, pero esta vez interactuando con la [API RestCountries](http://restcountries.eu/). Esta [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) es un servicio gratuito que brinda información real sobre los países del mundo.
 
 Para facilitarles la interacción con dicho servicio y que no tengan que preocuparse por cuestiones propias de la interacción HTTP, les dejamos la clase `RestCountriesAPI`, que provee tres métodos para hacer consultas:
@@ -108,7 +110,19 @@ paisConCodigo(codigoIso3: String): Country
 
 Nótese que los objetos que devuelve esta clase son de tipo `Country`, y que probablemente tengan una estructura diferente a los que ustedes crearon en la etapa anterior. Para no tener que tirar todo el código del `Observatorio`, conviene crear un objeto que oficie de _transformador_ entre el `Country` que devuelve la API y el `Pais` que ustedes crearon.
 
-Un pequeño detalle: esta API devuelve el código de la moneda **pero no** su cotización. Para obtenerla, van a tener que utilizar la `CurrencyConverterAPI`, que también les dejamos en el proyecto. Su interfaz es mucho más sencilla:
+**⚠️ Importante:** hay algunos atributos cuyos valores **no vienen** para todos los países, y están marcados como anulables en la clase `Country`. Para no tener que modificar los objetos `Pais`, les dejamos algunas decisiones:
+1. Si la `capital` viene nula, usar el string `"No especificada"` como capital.
+2. Si el `area` viene nula, usar el mismo valor que tenga para `population` como area.
+3. Pueden asumir que ni `borders`, ni `regionalBlocs`, ni `currencies` van a ser nulas (pero sí pueden ser listas vacías).
+4. Si viene más de una `currencies`, utilicen la primera. Y si no viene ninguna, usen `USD` como código de moneda.
+
+> :bulb: **Ayuda:** como parte del pasaje de un `Country` a un `Pais`, van a tener que transformar los códigos de países limítrofes que devuelve la API en objetos Países. Para evitar que se genere un bucle infinito, les recomendamos _no transformar_ los países limítrofes de los limítrofes. 
+
+#### CurrencyConverterAPI - cotización
+
+Un pequeño detalle: la RestCountriesAPI devuelve el código de la moneda **pero no** su cotización. Para obtener la cotización, van a tener que utilizar la `CurrencyConverterAPI`, que también les dejamos en el proyecto. 
+
+Su interfaz es mucho más sencilla:
 
 ```kotlin
 // Dado un código válido de moneda, devuelve la cotización del dólar para esa moneda.
@@ -116,6 +130,8 @@ convertirDolarA(codigoMoneda: String): Double
 ```
 
 :warning: Esta API necesita de una clave que puede [obtenerse aquí](https://free.currencyconverterapi.com/free-api-key), o pedile a tu docente que te facilite una.
+
+#### Requerimientos
 
 Se pide entonces:
 
@@ -126,9 +142,7 @@ Se pide entonces:
   * Alguno/s de los países ingresados no existe/n. Ejemplo: `observatorio.necesitanTraduccion("Venezuela", "Sarasa")`.
   * Hay más de un país cuyo nombre coincida con el parámetro de búsqueda. Ejemplo: `observatorio.sonPotencialesAliados("mbia", "Cabo Verde")`.
 
-**:warning: Importante:** una vez que conecten al Observatorio con la `RestCountriesAPI`, se les van a romper los tests (porque los datos reales no van a ser los mismos que ustedes inventaron). Los arreglaremos en la etapa siguiente.
-
-**:monocle_face: Pista:** como parte del pasaje de un `Country` a un `Pais`, van a tener que transformar los códigos de países limítrofes que devuelve la API en objetos Países. Para evitar que se genere un bucle infinito, les recomendamos _no transformar_ los países limítrofes de los limítrofes.  
+**:warning: Importante:** una vez que conecten al Observatorio con la `RestCountriesAPI`, se les van a romper los tests (porque los datos reales no van a ser los mismos que ustedes inventaron). Los arreglaremos en la etapa siguiente. 
 
 ### Etapa 4 - API impostora
 
