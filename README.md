@@ -84,7 +84,7 @@ Sobre el conjunto de **todos los países**:
 
 4. Obtener los códigos ISO de los 5 países con mayor densidad poblacional.
 5. Indicar el nombre del continente con más paises plurinacionales.
-6. Conocer el promedio de densidad poblacional de los países que son islas.
+6. Conocer el promedio de densidad poblacional de los países insulares (o sea, aquellos países que son islas).
 
 ### Etapa 3 - Conectando con el mundo real
 
